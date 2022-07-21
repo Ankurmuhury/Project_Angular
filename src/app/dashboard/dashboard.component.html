@@ -1,0 +1,68 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1 style="color:aliceblue"></h1>
+      <div class="d-flex">
+          <button routerLink="/login" class="btn btn-danger mx-2" (click)="logout">Logout</button>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card border-0 shadow p-3">
+                <div class="form-floating mb-3 tetx-center">
+                    <h5 class="text-center text-warning">Add Products</h5>
+                </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name">
+                        <label for="firstname">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="image">
+                        <label for="lastName">Image</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="price" name="price" [(ngModel)]="price">
+                        <label for="email">Price</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="offerprice" name="offerprice" [(ngModel)]="offerprice">
+                        <label for="mobile">Offer Price</label>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success" (click)="addUpdateProducts()">{{btnSubmit}}</button>
+            </div>
+        </div>
+        <div class="col-md-8 mt-2">
+            <h5 class="text-danger"> Products List</h5>
+            <div class="card p-3 shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Offer Price</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let products of productList">
+                            <td >{{products.name}}</td>
+                            <td>{{products.image}}</td>
+                            <td>{{products.price}}</td>
+                            <td>{{products.offerprice}}</td>
+                            <td>
+                                <button class="btn btn-outline-danger" (click)="deleteProducts(products)">Delete</button>&nbsp;
+                                <button class="btn btn-outline-danger" (click)=" onEdit(products)">Update</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
